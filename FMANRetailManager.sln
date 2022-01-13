@@ -3,7 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.30413.136
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FRMDataManager", "FRMDataManager\FRMDataManager.csproj", "{8ED5D212-D55B-4421-972F-5CD0922E7BAC}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FRMDataManager", "FRMDataManager\FRMDataManager.csproj", "{515472D6-4CD8-4709-A759-9E7736B3863F}"
+EndProject
+Project("{00D1A9C2-B5F0-4AF3-8072-F6C62B433612}") = "FRMData", "FRMData\FRMData.sqlproj", "{7B8F6CC6-40A6-42A3-8E2D-B079690649BC}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -11,10 +13,16 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{8ED5D212-D55B-4421-972F-5CD0922E7BAC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{8ED5D212-D55B-4421-972F-5CD0922E7BAC}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{8ED5D212-D55B-4421-972F-5CD0922E7BAC}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{8ED5D212-D55B-4421-972F-5CD0922E7BAC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{515472D6-4CD8-4709-A759-9E7736B3863F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{515472D6-4CD8-4709-A759-9E7736B3863F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{515472D6-4CD8-4709-A759-9E7736B3863F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{515472D6-4CD8-4709-A759-9E7736B3863F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7B8F6CC6-40A6-42A3-8E2D-B079690649BC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7B8F6CC6-40A6-42A3-8E2D-B079690649BC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7B8F6CC6-40A6-42A3-8E2D-B079690649BC}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
+		{7B8F6CC6-40A6-42A3-8E2D-B079690649BC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7B8F6CC6-40A6-42A3-8E2D-B079690649BC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7B8F6CC6-40A6-42A3-8E2D-B079690649BC}.Release|Any CPU.Deploy.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
