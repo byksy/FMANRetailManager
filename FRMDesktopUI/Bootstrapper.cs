@@ -11,14 +11,45 @@ namespace FRMDesktopUI
 {
     public class Bootstrapper : BootstrapperBase
     {
+        private SimpleContainer _container = new SimpleContainer();
         public Bootstrapper()
         {
             Initialize();
         }
 
+        protected override void Configure() // the container holds an instance of itself to pass out when people ask for simple container. Test
+        {
+            _container.Instance(_container);
+            _container
+                .Singleton<IWindowManager, WindowManager>()  // Bringing windows in and out
+                .Singleton<IEventAggregator, EventAggregator>(); // Pass event messaging throughout our application. Clearşnghouse of all events.
+
+            GetType().Assembly.GetTypes()
+                .Where(type => type.IsClass)
+                .Where(type => type.Name.EndsWith("ViewModel"))
+                .ToList()
+                .ForEach(viewModelType => _container.RegisterPerRequest(
+                    viewModelType, viewModelType.ToString(), viewModelType)); //Used Reflection. It takes models that end with "ViewModel" such as ShellViewModel
+        }
+
         protected override void OnStartup(object sender, StartupEventArgs e)
         {
             DisplayRootViewFor<ShellViewModel>();
+        }
+
+        protected override object GetInstance(Type service, string key)
+        {
+            return _container.GetInstance(service, key);
+        }
+
+        protected override IEnumerable<object> GetAllInstances (Type service)
+        {
+            return _container.GetAllInstances(service);
+        }
+
+        protected override void BuildUp(object instance)
+        {
+            _container.BuildUp(instance);
         }
     }
 }
