@@ -1,4 +1,5 @@
 ﻿using Caliburn.Micro;
+using FRMDesktopUI.Helpers;
 using FRMDesktopUI.ViewModels;
 using System;
 using System.Collections.Generic;
@@ -6,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
+using System.Windows.Controls;
 
 namespace FRMDesktopUI
 {
@@ -15,6 +17,11 @@ namespace FRMDesktopUI
         public Bootstrapper()
         {
             Initialize();
+
+            ConventionManager.AddElementConvention<PasswordBox>(
+            PasswordBoxHelper.BoundPasswordProperty,
+            "Password",
+            "PasswordChanged");
         }
 
         protected override void Configure() // the container holds an instance of itself to pass out when people ask for simple container. Test
@@ -22,7 +29,7 @@ namespace FRMDesktopUI
             _container.Instance(_container);
             _container
                 .Singleton<IWindowManager, WindowManager>()  // Bringing windows in and out
-                .Singleton<IEventAggregator, EventAggregator>(); // Pass event messaging throughout our application. Clearşnghouse of all events.
+                .Singleton<IEventAggregator, EventAggregator>(); // Pass event messaging throughout our application. Clearinghouse of all events.
 
             GetType().Assembly.GetTypes()
                 .Where(type => type.IsClass)
@@ -42,7 +49,7 @@ namespace FRMDesktopUI
             return _container.GetInstance(service, key);
         }
 
-        protected override IEnumerable<object> GetAllInstances (Type service)
+        protected override IEnumerable<object> GetAllInstances(Type service)
         {
             return _container.GetAllInstances(service);
         }
