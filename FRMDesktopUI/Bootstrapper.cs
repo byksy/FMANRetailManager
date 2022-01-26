@@ -27,9 +27,10 @@ namespace FRMDesktopUI
         protected override void Configure() // the container holds an instance of itself to pass out when people ask for simple container. Test
         {
             _container.Instance(_container);
-            _container
+            _container // Singleton is roughly same as static class
                 .Singleton<IWindowManager, WindowManager>()  // Bringing windows in and out
-                .Singleton<IEventAggregator, EventAggregator>(); // Pass event messaging throughout our application. Clearinghouse of all events.
+                .Singleton<IEventAggregator, EventAggregator>() // Pass event messaging throughout our application. Clearinghouse of all events.
+                .Singleton<IAPIHelper, APIHelper>(); // It will have that HTTP Client active and ready for us to use.
 
             GetType().Assembly.GetTypes()
                 .Where(type => type.IsClass)

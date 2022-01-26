@@ -1,4 +1,5 @@
 ﻿using Caliburn.Micro;
+using FRMDesktopUI.Helpers;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,7 +12,12 @@ namespace FRMDesktopUI.ViewModels
     {
         private string _userName;
         private string _password;
+        private IAPIHelper _apiHelper;
 
+        public LoginViewModel(IAPIHelper apiHelper) // It is dependency injection
+        {
+            _apiHelper = apiHelper;
+        }
         public string UserName // Wiring up the xmal property
         {
             get { return _userName; }
@@ -48,9 +54,18 @@ namespace FRMDesktopUI.ViewModels
             
         }
 
-        public void LogIn (string userName, string passwprd)
+        public async Task LogIn ()
         {
-            Console.WriteLine();
+            try
+            {
+                var result = await _apiHelper.Authenticate(UserName, Password);
+
+            }
+            catch (Exception ex)
+            {
+
+                Console.WriteLine(ex.Message); 
+            }
         }
 
     }
