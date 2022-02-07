@@ -8,6 +8,8 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
+using TRMDesktopUI.Library.Api;
+using TRMDesktopUI.Library.Models;
 
 namespace FRMDesktopUI
 {
@@ -30,6 +32,7 @@ namespace FRMDesktopUI
             _container // Singleton is roughly same as static class
                 .Singleton<IWindowManager, WindowManager>()  // Bringing windows in and out
                 .Singleton<IEventAggregator, EventAggregator>() // Pass event messaging throughout our application. Clearinghouse of all events.
+                .Singleton<ILoggedInUserModel, LoggedInUserModel>()
                 .Singleton<IAPIHelper, APIHelper>(); // It will have that HTTP Client active and ready for us to use.
 
             GetType().Assembly.GetTypes()
